@@ -1,6 +1,6 @@
 # Image Search Application
 
-This project is a dynamic web application that enables users to search for images using the Pixabay API. It provides an intuitive and seamless user experience with real-time notifications, smooth scrolling, and an enhanced image viewing interface. Below is a detailed description of the features, technologies used, and how to get started with the project.
+This project is a dynamic web application that enables users to search for images using the Pixabay API. It provides an intuitive and seamless user experience with real-time notifications, smooth scrolling, and an enhanced image viewing interface.
 
 ## Features
 
