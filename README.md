@@ -27,7 +27,7 @@ This project is a dynamic web application that enables users to search for image
 
 - Ensures that the application is accessible and visually appealing on various devices and screen sizes.
 
-##Technologies Used
+## Technologies Used
 
 - **HTML**: For structuring the web page.
 - **CSS**: For styling the application and providing a responsive layout.
