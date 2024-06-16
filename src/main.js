@@ -3,7 +3,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { searchImages } from './js/pixabay-api';
-import { imagesInfo } from './js/render-functions';
+import { createImagesMarkup } from './js/render-functions';
 
 const form = document.querySelector('.search-form');
 const loader = document.querySelector('.loader');
@@ -25,8 +25,13 @@ form.addEventListener('submit', async event => {
   if (userValue === '') {
     iziToast.show({
       title: 'Error',
+      titleColor: '#d5cae4',
       message: 'Please enter a search query!',
+      messageColor: '#d5cae4',
       backgroundColor: '#EF4040',
+      progressBarColor: '#d5cae4',
+      close: true,
+      class: 'custom-iziToast',
     });
     return;
   }
@@ -45,9 +50,14 @@ form.addEventListener('submit', async event => {
     if (data.hits.length === 0) {
       iziToast.show({
         title: 'No Results',
+        titleColor: '#d5cae4',
         message:
           'Sorry, there are no images matching your search query. Please try again!',
+        messageColor: '#d5cae4',
         backgroundColor: '#EF4040',
+        progressBarColor: '#d5cae4',
+        close: true,
+        class: 'custom-iziToast',
       });
       return;
     }
@@ -55,7 +65,19 @@ form.addEventListener('submit', async event => {
     totalHits = data.totalHits;
     loadedHits = data.hits.length;
 
-    const markup = imagesInfo(data.hits);
+    iziToast.show({
+      title: 'Congrats',
+      titleColor: '#d5cae4',
+      message: `We found ${totalHits} images`,
+      messageColor: '#d5cae4',
+      backgroundColor: '#e1854c',
+      progressBarColor: '#d5cae4',
+      position: 'topRight',
+      close: true,
+      class: 'custom-iziToast',
+    });
+
+    const markup = createImagesMarkup(data.hits);
     gallery.innerHTML = markup;
     lightbox.refresh();
 
@@ -67,8 +89,13 @@ form.addEventListener('submit', async event => {
 
     iziToast.show({
       title: 'Error',
+      titleColor: '#d5cae4',
       message: 'Sorry, something went wrong. Please try again later!',
+      messageColor: '#d5cae4',
       backgroundColor: '#EF4040',
+      progressBarColor: '#d5cae4',
+      close: true,
+      class: 'custom-iziToast',
     });
   }
 
@@ -86,7 +113,7 @@ loadMoreBtn.addEventListener('click', async () => {
 
     loadedHits += 15;
 
-    const markup = imagesInfo(data.hits);
+    const markup = createImagesMarkup(data.hits);
     gallery.insertAdjacentHTML('beforeend', markup);
 
     const { height: cardHeight } =
@@ -94,6 +121,7 @@ loadMoreBtn.addEventListener('click', async () => {
 
     window.scrollBy({
       top: cardHeight * 2,
+      behavior: 'smooth',
     });
 
     lightbox.refresh();
@@ -103,8 +131,13 @@ loadMoreBtn.addEventListener('click', async () => {
     } else {
       iziToast.show({
         title: 'End of Results',
+        titleColor: '#d5cae4',
         message: "We're sorry, but you've reached the end of search results.",
+        messageColor: '#d5cae4',
         backgroundColor: '#EF4040',
+        progressBarColor: '#d5cae4',
+        close: true,
+        class: 'custom-iziToast',
       });
     }
   } catch (error) {
@@ -112,8 +145,13 @@ loadMoreBtn.addEventListener('click', async () => {
 
     iziToast.show({
       title: 'Error',
+      titleColor: '#d5cae4',
       message: 'Sorry, something went wrong. Please try again later!',
+      messageColor: '#d5cae4',
       backgroundColor: '#EF4040',
+      progressBarColor: '#d5cae4',
+      close: true,
+      class: 'custom-iziToast',
     });
   }
 });

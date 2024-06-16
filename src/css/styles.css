@@ -4,8 +4,8 @@
   line-height: 24px;
   font-weight: 400;
 
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+  color: #e1e5eb;
+  background-color: #d5cae4;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,24 +21,31 @@
 
 input {
   width: 272px;
-  border-radius: 4px;
+  border-radius: 8px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  color: #808080;
+  color: #e59462;
+  background-color: #d5cae4;
   padding: 8px 0px 8px 16px;
   margin-right: 4px;
-  border: 1px solid #808080;
+  border: 2px solid #e59462;
+  cursor: pointer;
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+input::placeholder {
+  color: #e1e5eb;
+}
+
 input:hover {
-  border: 1px solid #000000;
+  border: 2px solid #e59462;
 }
 
 input:focus {
-  border: 1px solid #4e75ff;
+  border: 2px solid #e59462;
+  outline: 0;
 }
 
 button {
@@ -47,19 +54,23 @@ button {
   height: 40px;
   padding: 8px 16px 8px 16px;
   border-radius: 8px;
-  color: #ffffff;
+  color: #d5cae4;
   border: none;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  background-color: #4e75ff;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #e59462;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 button:hover,
-button:focus {
-  background-color: #6c8cff;
+button:focus,
+button:active {
+  background-color: #e1854c;
+  color: #d5cae4;
+  transform: scale(0.98);
 }
 
 @media screen and (min-width 768px) {
@@ -76,8 +87,15 @@ button:focus {
 }
 
 .gallery li {
-  border: 1px solid #808080;
+  border: 3px solid #d5cae4;
   width: 360px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.gallery li:hover {
+  transform: scale(1.02);
 }
 
 .gallery img {
@@ -88,6 +106,7 @@ button:focus {
 .gallery .info {
   display: flex;
   justify-content: space-evenly;
+  background-color: #d5cae4;
 }
 
 .info p {
@@ -99,7 +118,7 @@ button:focus {
   font-weight: 400;
   line-height: 2;
   letter-spacing: 0.04em;
-  color: #2e2f42;
+  color: #e59462;
 }
 
 .info span {
@@ -107,7 +126,7 @@ button:focus {
   font-size: 12px;
   line-height: 1.33;
   letter-spacing: 0.04em;
-  color: #2e2f42;
+  color: #e59462;
 }
 
 .load-more-btn {
@@ -115,20 +134,23 @@ button:focus {
   margin: 0 auto;
   margin-top: 32px;
   width: 125px;
-  background-color: #4e75ff;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #e59462;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .load-more-btn:hover,
 .load-more-btn:focus {
-  background-color: #6c8cff;
+  background-color: #e1854c;
+  color: #d5cae4;
+  transform: scale(0.98);
 }
 
 .loader {
   width: 30px;
   height: 30px;
   border: 3px solid;
-  border-color: #808080 transparent;
+  border-color: #e59462 transparent;
   border-radius: 50%;
   display: none;
   margin: 0 auto;
@@ -143,4 +165,9 @@ button:focus {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.custom-iziToast .iziToast-close {
+  top: 30%;
+  transform: translateY(-30%);
 }

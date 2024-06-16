@@ -1,4 +1,4 @@
-function imageInfo(image) {
+function createImageMarkup(image) {
   return `<li>
     <a href="${image.largeImageURL}">
       <img
@@ -15,6 +15,6 @@ function imageInfo(image) {
   </li>`;
 }
 
-export function imagesInfo(arr) {
-  return arr.map(imageInfo).join('');
+export function createImagesMarkup(arr) {
+  return arr.map(createImageMarkup).join('');
 }
